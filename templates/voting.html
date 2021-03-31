@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Cards against Alcohol</title>
+{% endblock %}
+
+{% block body %}
+<div style="background-image: url('https://wallpapercave.com/wp/6v6sU3h.jpg');">
+    <div class="content" style='background-color: rgba(252, 219, 184, 0.514);'>
+        <h2 style="text-align: center">Cards against Alcohol</h2>
+        <br><br>
+        <h1 style="text-align: center">{{ card }}</h1>
+        <br>
+
+        {% for player in players %}
+        <h3 style="text-align: center">{{ qid[player.id - 1] }}. {{ ans[player.id - 1] }}</h3>
+        {% endfor %}
+
+        <br><br>
+        {% for player in players %}
+            <form name="FinalVote" method="POST" action="/game/voting/" style="text-align: center"><br>
+                <p style="font-size:18px">
+                <td>Player {{ player.id }}:</td>
+                <td>{{ player.content }}</td>
+                </p>
+                {% for i in range(ans|length) %}
+                <input type="radio" name="vote" value="{{ qid[i] }}" onclick="this.form.submit();"> {{ qid[i] }}.
+                {% endfor %}
+                <br><br>
+            </form>
+        {% endfor %}
+
+        {% if votes|length == ans|length %}
+        <h3 style="text-align: center"><a href="/game/winner/">Show us the winner!</a></h3> 
+        {% else: %}
+        <h4 style="text-align: center">Submit 1 vote per player. </h4>
+        {% endif %}
+
+        {% if votes|length > ans|length %}
+        <h3 style="text-align: center">
+            <p>Invalid number of responses! Reset below.</p>
+        </h3>
+        <br>
+        {% endif %}
+
+        <h5 style="text-align: center">
+            <a href="/game/new_card">New card</a> <br>
+            <a href="/game/vote_reset/">Reset votes</a> <br>
+            <a href="/game/reset/">Reset answers</a>
+        </h5>
+        <br><br><br><br>
+        <h6 style="text-align: center">Brought to you by Gerian, Maya & Duco</h6>
+    </div>
+</div>
+{% endblock %}

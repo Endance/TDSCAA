@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Cards against Alcohol</title>
+{% endblock %}
+
+{% block body %}
+<div style="background-image: url('https://wallpapercave.com/wp/6v6sU3h.jpg');">
+
+    <div class="content" style='background-color: rgba(252, 219, 184, 0.514);'>
+        <h2 style="text-align: center">Cards against Alcohol</h2>
+        <br><br>
+        <div style='background-color: rgb(51, 19, 0);'>
+        <h1 style= 'color: rgb(255, 255, 255); text-align: center;'>{{ card_win }}</h1>
+        </div>
+        <br><br><br><br>
+
+    <h3 style="text-align: center">Shots to be divided by {{ player_win.content }} {{ cpu_win }}: {{  shots_amount }}. <br>Cheers!</h3>
+
+        <h3 style="text-align: center">
+            <a href="/game/" >New Round</a>
+        </h3>
+        <br>
+
+        <p style="text-align:center;">
+            <img src="https://media1.tenor.com/images/5c3481518ec4df530aca8f40a25f6deb/tenor.gif?itemid=11439928" alt="Eem slokje"
+            width="300" 
+            height="300"
+            />
+            </p>
+            
+        <br><br><br><br><br><br><br>
+        <h6 style="text-align: center">Brought to you by Gerian, Maya & Duco</h6>
+    </div>
+
+</div>
+{% endblock %}

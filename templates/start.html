@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Cards against Alcohol</title>
+{% endblock %}
+
+{% block body %}
+<div style="background-image: url('https://www.omropfryslan.nl/data/files/inos/38f5a311069f87f1b674.jpg');">
+    <div class="content" style='background-color: rgba(255, 198, 138, 0.671);'>
+        <h2 style="text-align: center">Cards against Alcohol</h2>
+
+        {% if players|length < 1 %}
+        <h4 style="text-align: center">Add players below.</h4>
+
+        {% else %}
+        <table> 
+            <tr>
+                <th>Player No.</th>
+                <th>Player Name</th>
+                <th>Actions</th>
+            </tr>
+
+            {% for player in players %}
+                <tr>
+                    <td>Player {{ player.id }}</td>
+                    <td>{{ player.content }}</td>
+                    <td>
+                        <a href="/delete/{{player.id}}">Delete</a>
+                        <br>
+                        <a href="/update/{{player.id}}">Update</a>
+                    </td>
+                </tr>
+            {% endfor %}
+
+        </table>
+        {% endif %}
+
+        {% if players|length < 8 %}
+        <div class="form">
+            <form action="/" method="POST" style="text-align:center;">
+                <input type="text" name="player_name", id="player_name">
+                <input type="submit" value="Add Player">
+            </form>
+
+            <h5 style="text-align: center">Min. Players = 2 <br> Max. Players = 8 <br></h5>
+            <h4 style="text-align: center"> Drink responsibly! </h4>
+
+        </div>
+
+        {% else %}
+        <h4 style="text-align: center">The maximum number of players has been reached</h4>
+        {% endif %}
+
+        <br>
+
+        {% if players|length > 1 %}
+        <h3 style="text-align: center">
+            <a href="/game/">Start game</a>
+        </h3> 
+        {% endif %}
+
+        <p style="text-align:center;">
+        <img src="https://i.gifer.com/2mtE.gif" alt="Cheers"
+            width="300" 
+            height="300"
+            />
+        </p>
+
+        <br><br><br><br>
+        <h6 style="text-align: center">Brought to you by Gerian, Maya & Duco</h6>
+    </div>
+</div>
+{% endblock %}
