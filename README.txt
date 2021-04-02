@@ -6,7 +6,7 @@ Install virtualenv:
 Open a terminal in the project root directory and run:
     virtualenv env
 
-Then run the command:
+Then run the command to navigate to the activate file (code might deviate a bit depending on operating system):
     .\env\Scripts\activate
 
 Then install the dependencies:
